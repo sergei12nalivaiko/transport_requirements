@@ -1,13 +1,19 @@
 package by.rw.tt.bean;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+
+import by.rw.tt.dao.PersonDao;
+import by.rw.tt.entity.Person;
+
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "loginBean")
@@ -15,6 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 6363905124188580639L;
+	
+	@EJB
+	private PersonDao personDao;
+
 
 	private String username;
 	private String password;
@@ -40,6 +50,7 @@ public class LoginBean implements Serializable {
 	}
 
 	public String login() {
+		
 
 		System.out.println(username);
 		System.out.println(password);
@@ -61,6 +72,9 @@ public class LoginBean implements Serializable {
 	}
 
 	public String logout() {
+		List<Person> persons = personDao.selectPersonAllInfoByID("0000071841");
+		System.out.println(persons);
+		
 		String result = "/login.xhtml?faces-redirect=true";
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
