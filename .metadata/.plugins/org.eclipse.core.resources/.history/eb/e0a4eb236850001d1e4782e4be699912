@@ -1,0 +1,5 @@
+package by.rw.tt.entity.service;
+
+public class PersonService {
+
+}
