@@ -7,7 +7,7 @@
 
 <h:head>
 
-	<link rel="stylesheet" href="resources/css/style.css" />
+	<link rel="stylesheet" href="resources/css/login.css" />
 
 </h:head>
 
@@ -15,50 +15,31 @@
 	<div class="nameProject">
 		<p:outputLabel value="Транспортные требования" />
 	</div>
-
-	<div class="card">
+	<div class="loginForm">
 		<h:form>
-			<h5 class="mt-0">Введите учетные данные</h5>
-			<div class="field grid">
-				<p:outputLabel styleClass="col-fixed" style="width:100px"
-					value="Имя пользователя" />
-				<div class="col">
-					<p:password value="#{loginBean.username}" label="Имя пользователя"
-						required="true" />
-				</div>
+			<div>
+				<p:panelGrid columns="2">
+					<h:outputLabel value="Логин"></h:outputLabel>
+					<p:inputText value="#{loginBean.username}"></p:inputText>
+					<h:outputLabel value="Пароль"></h:outputLabel>
+					<p:password value="#{loginBean.password}"></p:password>
+					<f:facet name="footer" class="footer">
+						<p:commandButton class="loginButton" value="Вход" action="#{loginBean.login}" ajax="false"></p:commandButton>
+					</f:facet>
+				</p:panelGrid>
 			</div>
 
-			<div class="field grid">
-				<p:outputLabel styleClass="col-fixed" style="width:100px"
-					value="Пароль" />
-				<div class="col">
-					<p:password value="#{loginBean.password}" label="Пароль"
-						required="true" />
-				</div>
-			</div>
 
-			<p:commandButton value="Вход"
-				style="margin-top: 20px; font-size: 1.2em;"
-				action="#{loginBean.login}" ajax="false" />
-
-
-			<p:messages id="messages" showDetail="true">
-				<p:autoUpdate />
-			</p:messages>
+			<p:messages id="messages" showDetail="true" closable="true" autoUpdate="true"/>
+          
+       
 		</h:form>
 	</div>
-	
-	<div class="card">
-		<h:form>
 
-			<p:commandButton value="Выход]"
-				style="margin-top: 20px; font-size: 1.2em;"
-				action="#{loginBean.logout}" ajax="false" />
 
-			<p:messages id="messages" showDetail="true">
-				<p:autoUpdate />
-			</p:messages>
-		</h:form>
-	</div>
+
+
+
+
 </h:body>
 </html>

@@ -29,4 +29,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="by.rw.tt.entity.Person"/>
+    <fullyQualifiedTypeName name="by.rw.tt.repository.PersonRepository"/>
+    <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
 </qualifiedTypeNameHistroy>

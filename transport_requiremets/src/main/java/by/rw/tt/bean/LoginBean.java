@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-
 import by.rw.tt.dao.PersonDao;
 import by.rw.tt.entity.Person;
 
@@ -20,8 +20,9 @@ import by.rw.tt.entity.Person;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-	private static final long serialVersionUID = 6363905124188580639L;
-	
+	private static final long serialVersionUID = 1L;
+
+
 	@EJB
 	private PersonDao personDao;
 
@@ -55,20 +56,30 @@ public class LoginBean implements Serializable {
 		System.out.println(username);
 		System.out.println(password);
 		
-		HttpServletRequest request = (HttpServletRequest) (FacesContext.getCurrentInstance().getExternalContext()
-				.getRequest());
+		HttpServletRequest request = (HttpServletRequest) (FacesContext.getCurrentInstance().getExternalContext().getRequest());
+		
 		try {
 			request.login(username, password);
 			if (request.isUserInRole("TR")) {
-				return "pages/main.xhtml?faces-redirect=true";
+				return "pages/navigationPanel.xhtml?faces-redirect=true";
 			} else {
 				return logout();
 			}
 		} catch (ServletException e) {
 			e.printStackTrace();
-			System.out.println("Неверно введен пользователь или пароль.");
+			switch (e.getStackTrace()[0].getMethodName()) {
+			case "login": {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Неверно введен логин или пароль."));
+				return "login";
+			}
+		
+			default: {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "", "Неизвестная ошибка."));
+				return "login";
+			}
 		}
-		return "login";
+		
+		}
 	}
 
 	public String logout() {
@@ -80,9 +91,12 @@ public class LoginBean implements Serializable {
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 
 		try {
+			System.out.println("user logout");
 			request.logout();
+			
 		} catch (ServletException ex) {
 			ex.printStackTrace();
+			
 		}
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 
@@ -110,5 +124,6 @@ public class LoginBean implements Serializable {
 	public String toString() {
 		return "LoginBean [username=" + username + ", password=" + password + "]";
 	}
-
+	
+	
 }
