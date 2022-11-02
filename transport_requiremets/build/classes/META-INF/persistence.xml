@@ -11,4 +11,8 @@
 			<property name="eclipselink.logging.parameters" value="true" /> -->
 		</properties>
 	</persistence-unit>
+	
+	<persistence-unit name="TransportRequirementsDB2ABD13">
+	<jta-data-source> jdbc/db2abd13 </jta-data-source>
+	</persistence-unit>
 </persistence>

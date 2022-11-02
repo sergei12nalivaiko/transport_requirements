@@ -23,33 +23,6 @@ import javax.validation.constraints.Pattern;
 public class Organization implements Serializable {
 	private static final long serialVersionUID = -8571625135087898581L;
 
-	public Organization() {
-		super();
-	}
-
-	public Organization(String number, TicketOffice ticketOffice, ConsolidatedOrg consOrg, String be, String shortName,
-			String fullName, String totalName, String uNN, String address, String account, String bank, String mFO,
-			String email, int liquidation, Date recordBgn, Date recordEnd, String nod) {
-		super();
-		this.number = number;
-		this.ticketOffice = ticketOffice;
-		this.consOrg = consOrg;
-		this.be = be;
-		this.shortName = shortName;
-		this.fullName = fullName;
-		this.totalName = totalName;
-		UNN = uNN;
-		this.address = address;
-		this.account = account;
-		this.bank = bank;
-		MFO = mFO;
-		this.email = email;
-		this.liquidation = liquidation;
-		this.recordBgn = recordBgn;
-		this.recordEnd = recordEnd;
-		this.nod = nod;
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_ORG")
@@ -61,11 +34,11 @@ public class Organization implements Serializable {
 	private String number;
 
 	@ManyToOne
-	@JoinColumn(name = "OFFICE_NUM", referencedColumnName = "OFFICE_NUM")
+	@JoinColumn(name = "OFFICE_NUM")
 	private TicketOffice ticketOffice;
 
 	@ManyToOne
-	@JoinColumn(name = "ORG_NUM_CONS", referencedColumnName = "ORG_NUM")
+	@JoinColumn(name = "ORG_NUM_CONS")
 	private ConsolidatedOrg consOrg;
 
 	@Column(name = "ORG_NUM_BE")
@@ -125,6 +98,33 @@ public class Organization implements Serializable {
 
 	@Transient
 	private Date curDate;
+
+	public Organization() {
+		super();
+	}
+
+	public Organization(String number, TicketOffice ticketOffice, ConsolidatedOrg consOrg, String be, String shortName,
+			String fullName, String totalName, String uNN, String address, String account, String bank, String mFO,
+			String email, int liquidation, Date recordBgn, Date recordEnd, String nod) {
+		super();
+		this.number = number;
+		this.ticketOffice = ticketOffice;
+		this.consOrg = consOrg;
+		this.be = be;
+		this.shortName = shortName;
+		this.fullName = fullName;
+		this.totalName = totalName;
+		UNN = uNN;
+		this.address = address;
+		this.account = account;
+		this.bank = bank;
+		MFO = mFO;
+		this.email = email;
+		this.liquidation = liquidation;
+		this.recordBgn = recordBgn;
+		this.recordEnd = recordEnd;
+		this.nod = nod;
+	}
 
 	public int getId() {
 		return id;

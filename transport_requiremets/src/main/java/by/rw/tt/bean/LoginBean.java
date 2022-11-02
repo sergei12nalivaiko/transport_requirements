@@ -5,30 +5,34 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+
 import by.rw.tt.dao.PersonDao;
-import by.rw.tt.entity.Person;
+import by.rw.tt.entity.expestdb.Armino;
+import by.rw.tt.entity.person.Person;
+import by.rw.tt.service.ArminoService;
 
 
-@SuppressWarnings("deprecation")
-@ManagedBean(name = "loginBean")
+
+@Named("loginBean")
 @SessionScoped
 public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-
-	@EJB
-	private PersonDao personDao;
-
-
 	private String username;
 	private String password;
+	
+	@EJB
+	private PersonDao personDao;
+	
+	@EJB
+	private ArminoService arminoService;
 
 	public LoginBean() {
 		super();
@@ -60,6 +64,9 @@ public class LoginBean implements Serializable {
 		
 		try {
 			request.login(username, password);
+			List<Armino> arminos = arminoService.getAllByMesIndex(101);
+			System.out.println(arminos);
+			System.out.println(arminos.size());
 			if (request.isUserInRole("TR")) {
 				return "pages/navigationPanel.xhtml?faces-redirect=true";
 			} else {
@@ -83,9 +90,11 @@ public class LoginBean implements Serializable {
 	}
 
 	public String logout() {
-		List<Person> persons = personDao.selectPersonAllInfoByID("0000071841");
-		System.out.println(persons);
-		
+		Person person = personDao.selectPersonByID("0000071841");
+		System.out.println(person);
+//		List<Armino> arminos = arminoService.getAllByMesIndex(101);
+//		System.out.println(arminos);
+//		System.out.println(arminos.size());
 		String result = "/login.xhtml?faces-redirect=true";
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();

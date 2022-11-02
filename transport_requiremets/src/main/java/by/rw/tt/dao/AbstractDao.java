@@ -6,6 +6,10 @@ import javax.persistence.PersistenceContext;
 
 @Stateless
 public class AbstractDao {
-	@PersistenceContext
-	protected EntityManager em;
+	
+	@PersistenceContext(unitName = "transport_requiremets")
+	protected EntityManager emIb23;
+
+	@PersistenceContext(unitName = "TransportRequirementsDB2ABD13")
+	protected EntityManager emDb2abd13;
 }
