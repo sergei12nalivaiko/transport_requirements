@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import by.rw.tt.entity.person.Person;
-import by.rw.tt.entity.TicketOffice;
+import by.rw.tt.entity.sp.TicketOfficeSP;
 
 @Entity
 @Table(name = "FORM3", schema = "TICKET")
@@ -47,7 +47,7 @@ public class Form3 implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "OFFICE_NUM")
-	private TicketOffice ticketOffice;
+	private TicketOfficeSP ticketOffice;
 
 	public Form3Pk getForm3Pk() {
 		return form3Pk;
@@ -97,11 +97,11 @@ public class Form3 implements Serializable {
 		this.trtreb = trtreb;
 	}
 
-	public TicketOffice getTicketOffice() {
+	public TicketOfficeSP getTicketOffice() {
 		return ticketOffice;
 	}
 
-	public void setTicketOffice(TicketOffice ticketOffice) {
+	public void setTicketOffice(TicketOfficeSP ticketOffice) {
 		this.ticketOffice = ticketOffice;
 	}
 

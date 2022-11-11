@@ -15,15 +15,15 @@
 		<p:panel name = "navigationPanel">
 			<div class="ui-g mainPanel">
 				<div class = "leftPanel">
-					<p:commandButton icon="fa fa-fw fa-home" action="login?faces-redirect=true" global="false" />
-					<p:menuButton id="view" value="Справочники">
-						<p:menuitem value="Справочник укрупненных организаций" action="dictionary_cons_org?faces-redirect=true" global="false" />
+					<p:commandButton icon="fa fa-fw fa-home" action="main?faces-redirect=true" global="false"/>
+					<p:menuButton id="view" value="Справочники" class="menuItem">
+						<p:menuitem value="Справочник укрупненных организаций" action="cons_org_sp?faces-redirect=true" global="false"/>
 						<p:menuitem value="Справочник организаций" action="dictionary_org?faces-redirect=true" global="false" />
 						<p:menuitem value="Справочник билетных бюро" action="dictionary_bil_b?faces-redirect=true" global="false" />
 						<p:menuitem value="Справочник визирования" action="dictionary_viz?faces-redirect=true" global="false" />
 						<p:menuitem value="Справочник исполнителей" action="dictionary_rep_isp?faces-redirect=true" global="false" />
 					</p:menuButton>
-					<p:commandButton value="Расчёт перечней" action="secondPage?faces-redirect=true" global="false" />
+					<p:commandButton value="Расчёт перечней" action="calculationOfLists?faces-redirect=true" global="false" />
 					<p:button value="Выходные решения" type="button" target="_blank" href="#{bean1.urlBO}" />
 				</div>
 				<div class = "rightPanel">

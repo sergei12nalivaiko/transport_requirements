@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+@import url("layout.css");
+
+.fdu {
+	/* background: #00ff00; */
+	width: 30%;
+	height: 300px;
+	margin: auto;
+	margin-top: auto;
+	margin-top: 14%;
+}
+
+.fduForm {
+	border: 4px solid darkcyan;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.fduPanel {
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse !important;
+}
+
+.fduPanel tr {
+	height: 30px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.input {
+	width: 70%;
+	margin-left: 13%;
+}
+
+.output {
+	margin-left: 40%;
+}
+
+.footer{
+	background: #2c4359 !important;
+}
+
+.btn {
+	margin-left: 8%;
+	width: 82%;
+}

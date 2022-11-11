@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import by.rw.tt.entity.Organization;
+import by.rw.tt.entity.sp.OrganizationSP;
 
 @Entity
 @Table(name = "PERSONAL", schema = "TICKET")
@@ -68,7 +68,7 @@ public class Person implements Serializable {
 	@ManyToOne
 	@JoinColumns({ @JoinColumn(name = "ORG_NUM", referencedColumnName = "ORG_NUM"),
 			@JoinColumn(name = "OFFICE_NUM", referencedColumnName = "OFFICE_NUM") })
-	private Organization organization;
+	private OrganizationSP organization;
 
 	@ManyToOne
 	@JoinColumn(name = "CODE_STATUS", referencedColumnName = "CODE_STATUS")
@@ -187,11 +187,11 @@ public class Person implements Serializable {
 		this.note = note;
 	}
 
-	public Organization getOrganization() {
+	public OrganizationSP getOrganization() {
 		return organization;
 	}
 
-	public void setOrganization(Organization organization) {
+	public void setOrganization(OrganizationSP organization) {
 		this.organization = organization;
 	}
 

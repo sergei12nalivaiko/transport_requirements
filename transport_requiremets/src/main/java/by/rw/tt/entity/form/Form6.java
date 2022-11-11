@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import by.rw.tt.entity.TicketOffice;
+import by.rw.tt.entity.sp.TicketOfficeSP;
 import by.rw.tt.entity.person.Person;
 import by.rw.tt.entity.sp.FormSP;
 
@@ -49,7 +49,7 @@ public class Form6 implements Serializable{
 
 	@ManyToOne
 	@JoinColumn(name = "OFFICE_NUM")
-	private TicketOffice ticketOffice;
+	private TicketOfficeSP ticketOffice;
 
 	@Column(name = "DATE_COR")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -63,7 +63,7 @@ public class Form6 implements Serializable{
 	}
 
 	public Form6(Form6Pk form6Pk, Date dateIssueF6, Person person, FormSP formSP, String series, int codeKind,
-			TicketOffice ticketOffice, Date date_cor, String trtreb) {
+			TicketOfficeSP ticketOffice, Date date_cor, String trtreb) {
 		super();
 		this.form6Pk = form6Pk;
 		this.dateIssueF6 = dateIssueF6;

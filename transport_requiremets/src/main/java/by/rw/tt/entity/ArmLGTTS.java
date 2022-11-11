@@ -18,7 +18,7 @@ import by.rw.tt.entity.sp.LgotSP;
 
 @Entity
 @Table(name = "TT_LGTT", schema = "TICKET")
-public class ArminoLGTT implements Serializable {
+public class ArmLGTTS implements Serializable {
 
 	private static final long serialVersionUID = -3965356807814176258L;
 
@@ -305,7 +305,7 @@ public class ArminoLGTT implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ArminoLGTT other = (ArminoLGTT) obj;
+		ArmLGTTS other = (ArmLGTTS) obj;
 		return Objects.equals(arminoTT, other.arminoTT) && Objects.equals(data, other.data)
 				&& Objects.equals(dataotp, other.dataotp) && Objects.equals(dorf, other.dorf)
 				&& Objects.equals(fio, other.fio) && Objects.equals(goslg, other.goslg)

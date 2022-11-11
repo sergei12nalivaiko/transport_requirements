@@ -1,4 +1,4 @@
-package by.rw.tt.entity;
+package by.rw.tt.entity.sp;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,9 +18,10 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+
 @Entity
 @Table(name = "SP_ORGANIZATIONS", schema = "TICKET")
-public class Organization implements Serializable {
+public class OrganizationSP implements Serializable {
 	private static final long serialVersionUID = -8571625135087898581L;
 
 	@Id
@@ -35,11 +36,11 @@ public class Organization implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "OFFICE_NUM")
-	private TicketOffice ticketOffice;
+	private TicketOfficeSP ticketOffice;
 
 	@ManyToOne
 	@JoinColumn(name = "ORG_NUM_CONS")
-	private ConsolidatedOrg consOrg;
+	private ConsolidatedOrgSP consOrg;
 
 	@Column(name = "ORG_NUM_BE")
 	private String be;
@@ -99,13 +100,13 @@ public class Organization implements Serializable {
 	@Transient
 	private Date curDate;
 
-	public Organization() {
+	public OrganizationSP() {
 		super();
 	}
 
-	public Organization(String number, TicketOffice ticketOffice, ConsolidatedOrg consOrg, String be, String shortName,
-			String fullName, String totalName, String uNN, String address, String account, String bank, String mFO,
-			String email, int liquidation, Date recordBgn, Date recordEnd, String nod) {
+	public OrganizationSP(String number, TicketOfficeSP ticketOffice, ConsolidatedOrgSP consOrg, String be,
+			String shortName, String fullName, String totalName, String uNN, String address, String account,
+			String bank, String mFO, String email, int liquidation, Date recordBgn, Date recordEnd, String nod) {
 		super();
 		this.number = number;
 		this.ticketOffice = ticketOffice;
@@ -142,19 +143,19 @@ public class Organization implements Serializable {
 		this.number = number;
 	}
 
-	public TicketOffice getTicketOffice() {
+	public TicketOfficeSP getTicketOffice() {
 		return ticketOffice;
 	}
 
-	public void setTicketOffice(TicketOffice ticketOffice) {
+	public void setTicketOffice(TicketOfficeSP ticketOffice) {
 		this.ticketOffice = ticketOffice;
 	}
 
-	public ConsolidatedOrg getConsOrg() {
+	public ConsolidatedOrgSP getConsOrg() {
 		return consOrg;
 	}
 
-	public void setConsOrg(ConsolidatedOrg consOrg) {
+	public void setConsOrg(ConsolidatedOrgSP consOrg) {
 		this.consOrg = consOrg;
 	}
 
@@ -321,7 +322,7 @@ public class Organization implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Organization other = (Organization) obj;
+		OrganizationSP other = (OrganizationSP) obj;
 		return Objects.equals(MFO, other.MFO) && Objects.equals(UNN, other.UNN)
 				&& Objects.equals(account, other.account) && Objects.equals(address, other.address)
 				&& Objects.equals(bank, other.bank) && Objects.equals(be, other.be)

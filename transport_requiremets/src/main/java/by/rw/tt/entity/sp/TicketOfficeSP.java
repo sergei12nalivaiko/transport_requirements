@@ -1,4 +1,4 @@
-package by.rw.tt.entity;
+package by.rw.tt.entity.sp;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "SP_TICKET_OFFICE", schema = "TICKET")
-public class TicketOffice implements Serializable {
+public class TicketOfficeSP implements Serializable {
 	private static final long serialVersionUID = 5681368981032812138L;
 
 	@Id
@@ -120,7 +120,7 @@ public class TicketOffice implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TicketOffice other = (TicketOffice) obj;
+		TicketOfficeSP other = (TicketOfficeSP) obj;
 		return Objects.equals(email, other.email) && Objects.equals(fio, other.fio) && Objects.equals(name, other.name)
 				&& Objects.equals(nodNumber, other.nodNumber) && Objects.equals(number, other.number)
 				&& Objects.equals(numberAndName, other.numberAndName) && Objects.equals(objectName, other.objectName)

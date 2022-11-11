@@ -11,14 +11,19 @@
 </h:head>
 
 <h:body>
-	<div class="main">
-		<h:form>
-			<p:spinner />
-			<p:button value="bbbb"></p:button>
-			<p:calendar></p:calendar>
+	<ui:include src="navigationPanel.xhtml" />
+	<div class="rightMenu">
+		<h:form class = "rightForm">
+			<p:panelGrid columns="1" class="rightMenuPanel">
+				<p:row>
+					<p:commandButton value="Сформировать данные для ФДУ-1" action="fdu_1?faces-redirect=true" global="false" class = "mainMenuButton"/>
+				</p:row>
+				<p:row>
+					<p:commandButton value="Сформировать данные для ЕК ИСУФР" action="ek_isufr?faces-redirect=true" global="false" class = "mainMenuButton"/>
+				</p:row>
+			</p:panelGrid>
 		</h:form>
 	</div>
-
 
 
 </h:body>

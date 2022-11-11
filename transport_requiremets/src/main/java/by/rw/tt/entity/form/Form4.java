@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 import by.rw.tt.entity.person.Person;
 import by.rw.tt.entity.sp.FormSP;
-import by.rw.tt.entity.TicketOffice;
+import by.rw.tt.entity.sp.TicketOfficeSP;
 
 @Entity
 @Table(name="FORM4", schema="TICKET")
@@ -34,7 +34,7 @@ public class Form4 implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "OFFICE_NUM")
-	private TicketOffice ticketOffice;
+	private TicketOfficeSP ticketOffice;
 	
 	@Column(name="DATE_COR")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -48,7 +48,7 @@ public class Form4 implements Serializable{
 		super();
 	}
 
-	public Form4(Form4Pk form4Pk, Person person, TicketOffice ticketOffice, Date date_cor, FormSP formSP) {
+	public Form4(Form4Pk form4Pk, Person person, TicketOfficeSP ticketOffice, Date date_cor, FormSP formSP) {
 		super();
 		this.form4Pk = form4Pk;
 		this.person = person;
@@ -73,11 +73,11 @@ public class Form4 implements Serializable{
 		this.person = person;
 	}
 
-	public TicketOffice getTicketOffice() {
+	public TicketOfficeSP getTicketOffice() {
 		return ticketOffice;
 	}
 
-	public void setTicketOffice(TicketOffice ticketOffice) {
+	public void setTicketOffice(TicketOfficeSP ticketOffice) {
 		this.ticketOffice = ticketOffice;
 	}
 

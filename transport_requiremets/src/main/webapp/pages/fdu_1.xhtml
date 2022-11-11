@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Транспортные требования</title>
+	<link rel="stylesheet" href="../resources/css/fdu.css" />
+</h:head>
+
+<h:body>
+	<ui:include src="navigationPanel.xhtml" />
+	<div class="fdu">
+		<h:form class="fduForm">
+			<p:panelGrid class="fduPanel">
+				<p:row>
+					<p:column colspan="2" style="text-align: center">
+						<p:outputLabel value="Данные для ФДУ-1" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Месяц" class="output" />
+					</p:column>
+					<p:column>
+						<p:inputMask id="month" mask="99" class="input" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Год" class="output" />
+					</p:column>
+					<p:column>
+						<p:inputMask id="year" mask="9999" class="input" />
+					</p:column>
+				</p:row>
+				<p:row class = "footer">
+					<p:column colspan="2">
+						<p:commandButton value="Сформировать" class="btn"/>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+	</div>
+
+
+</h:body>
+</html>

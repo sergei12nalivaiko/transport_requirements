@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import by.rw.tt.dao.PersonDao;
 import by.rw.tt.entity.expestdb.Armino;
 import by.rw.tt.entity.person.Person;
+import by.rw.tt.entity.sp.ConsolidatedOrgSP;
 import by.rw.tt.service.ArminoService;
+import by.rw.tt.service.ConsolidatedOrgSpService;
 
 
 
@@ -33,6 +35,9 @@ public class LoginBean implements Serializable {
 	
 	@EJB
 	private ArminoService arminoService;
+	
+	@EJB
+	private ConsolidatedOrgSpService consolidatedOrgSpService; 
 
 	public LoginBean() {
 		super();
@@ -67,8 +72,10 @@ public class LoginBean implements Serializable {
 			List<Armino> arminos = arminoService.getAllByMesIndex(101);
 			System.out.println(arminos);
 			System.out.println(arminos.size());
+			List<ConsolidatedOrgSP> org = consolidatedOrgSpService.findAllConsolidatedOrgs();
+			System.out.println(org);
 			if (request.isUserInRole("TR")) {
-				return "pages/navigationPanel.xhtml?faces-redirect=true";
+				return "pages/main.xhtml?faces-redirect=true";
 			} else {
 				return logout();
 			}
@@ -92,9 +99,6 @@ public class LoginBean implements Serializable {
 	public String logout() {
 		Person person = personDao.selectPersonByID("0000071841");
 		System.out.println(person);
-//		List<Armino> arminos = arminoService.getAllByMesIndex(101);
-//		System.out.println(arminos);
-//		System.out.println(arminos.size());
 		String result = "/login.xhtml?faces-redirect=true";
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
